@@ -1,271 +1,164 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Saloni Edalwar - Resume</title>
-    <style>
-        /* Base styles & reset */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
-
-        body {
-            background-color: #f0f4f8;
-            color: #333;
-            padding: 30px 15px;
-            display: flex;
-            justify-content: center;
-        }
-
-        /* Container matching the clean, centered card layout */
-        .container {
-            max-width: 850px;
-            width: 100%;
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-            overflow: hidden;
-            padding: 30px;
-        }
-
-        /* Top Header Banner (Mint/Teal gradient inspired by your first image) */
-        header {
-            background: linear-gradient(to right, #b2dfdb, #e0f2f1);
-            border: 1px solid #80cbc4;
-            border-radius: 6px;
-            padding: 25px;
-            text-align: center;
-            margin-bottom: 25px;
-        }
-
-        header h1 {
-            color: #004d40;
-            font-size: 28px;
-            margin-bottom: 8px;
-            letter-spacing: 0.5px;
-        }
-
-        header p {
-            color: #00796b;
-            font-size: 14px;
-            margin: 4px 0;
-        }
-
-        /* Profile & Core Details Section */
-        .profile-section {
-            display: flex;
-            align-items: center;
-            gap: 25px;
-            background-color: #e8f5e9;
-            border: 1px solid #c8e6c9;
-            border-radius: 6px;
-            padding: 20px;
-            margin-bottom: 25px;
-        }
-
-        .profile-section img {
-            width: 110px;
-            height: 110px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid #a5d6a7;
-            background-color: #fff;
-        }
-
-        .profile-text h2 {
-            color: #1b5e20;
-            margin-bottom: 5px;
-            font-size: 20px;
-        }
-
-        /* Reusable Card Styling for Resume Sections */
-        .section-card {
-            background-color: #e8f5e9;
-            border: 1px solid #c8e6c9;
-            border-radius: 6px;
-            margin-bottom: 25px;
-            overflow: hidden;
-        }
-
-        .section-header {
-            background-color: #a5d6a7;
-            color: #1b5e20;
-            padding: 10px 15px;
-            font-size: 16px;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .section-content {
-            padding: 15px 20px;
-        }
-
-        /* Typography & List Styling */
-        h3 {
-            color: #004d40;
-            font-size: 15px;
-            margin-top: 12px;
-            margin-bottom: 3px;
-        }
-
-        h3:first-of-type {
-            margin-top: 0;
-        }
-
-        p {
-            font-size: 14px;
-            color: #4a5a4a;
-            margin-bottom: 8px;
-        }
-
-        ul {
-            list-style-type: square;
-            padding-left: 20px;
-        }
-
-        li {
-            font-size: 14px;
-            color: #4a5a4a;
-            margin-bottom: 6px;
-        }
-
-        /* Project Box Separators */
-        .project-item {
-            border-bottom: 1px solid #c8e6c9;
-            padding-bottom: 12px;
-            margin-bottom: 12px;
-        }
-
-        .project-item:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-            margin-bottom: 0;
-        }
-
-        /* Responsive design for smaller screens */
-        @media (max-width: 600px) {
-            body {
-                padding: 10px;
-            }
-            .profile-section {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
-    </style>
+    <title>Student Resume</title>
 </head>
+
 <body>
 
-<div class="container">
+<section>
 
-    <!-- Header Section -->
-    <header>
-        <h1>Saloni Edalwar</h1>
-        <p><strong>B.Tech - CSE-(AI-ML) (1st Year)</strong></p>
-        <p>Email: salonie.ml25@sbjit.edu.in | Phone: +91 9515584958</p>
-        <p>LinkedIn: linkedin.com/in/Saloni Edalwar | GitHub: github.com/salonieml25</p>
-    </header>
+<center>
+<h1>Student Resume</h1>
 
-    <!-- Profile Section -->
-    <div class="profile-section">
-        <img src="https://static.vecteezy.com/system/resources/thumbnails/042/332/098/small/default-avatar-profile-icon-grey-photo-placeholder-female-no-photo-images-for-unfilled-user-profile-greyscale-illustration-for-socail-media-web-vector.jpg" alt="Profile Photo">
-        <div class="profile-text">
-            <h2>Candidate Profile</h2>
-            <p>Aspiring Computer Science Engineer specializing in Artificial Intelligence and Machine Learning. Passionate about software development, web design, and hands-on programming solutions.</p>
-        </div>
-    </div>
+<figure>
+<img src="photo.jpg" width="150" height="170" alt="Profile Photo">
+<figcaption>Saloni Edalwar</figcaption>
+</figure>
 
-    <!-- Education Section -->
-    <div class="section-card">
-        <div class="section-header">Education</div>
-        <div class="section-content">
-            <h3>Bachelor of Technology (B.Tech)</h3>
-            <p>RTMNU | 2025 - 2029</p>
-            <p>Currently in 2nd Year</p>
-        </div>
-    </div>
+</center>
 
-    <!-- Qualification Details Section -->
-    <div class="section-card">
-        <div class="section-header">Qualification Details</div>
-        <div class="section-content">
-            <h3>HSC (12th)</h3>
-            <p>New English High School | 2025</p>
-            <p>Percentage: 61%</p>
+</section>
 
-            <h3>SSC (10th)</h3>
-            <p>J.N Tata parsi School | 2023</p>
-            <p>Percentage: 82%</p>
-        </div>
-    </div>
+<hr>
 
-    <!-- Technical Skills Section -->
-    <div class="section-card">
-        <div class="section-header">Technical Skills</div>
-        <div class="section-content">
-            <ul>
-                <li><strong>Programming:</strong> C, C++, Python language</li>
-                <li><strong>Web Development:</strong> HTML, CSS</li>
-                <li><strong>Tools:</strong> GitHub</li>
-            </ul>
-        </div>
-    </div>
+<section>
 
-    <!-- Academic Projects Section -->
-    <div class="section-card">
-        <div class="section-header">Academic Projects</div>
-        <div class="section-content">
-            <div class="project-item">
-                <h3>Simple Calculator (C Program)</h3>
-                <p>Developed a basic calculator using C language.</p>
-            </div>
-            <div class="project-item">
-                <h3>Personal Portfolio Webpage</h3>
-                <p>Created a basic webpage using HTML and CSS.</p>
-            </div>
-        </div>
-    </div>
+<h2><mark>Personal Information</mark></h2>
 
-    <!-- Certifications Section -->
-    <div class="section-card">
-        <div class="section-header">Certifications</div>
-        <div class="section-content">
-            <ul>
-                <li>C Programming Course</li>
-                <li>Basic Web Development Course</li>
-            </ul>
-        </div>
-    </div>
+<p><b>Name:</b> Saloni Edalwar</p>
+<p><b>Course:</b> B.Tech CSE (AI & ML)</p>
+<p><b>College:</b> SB Jain Institute of Technology, Nagpur</p>
 
-    <!-- Achievements & Activities Section -->
-    <div class="section-card">
-        <div class="section-header">Achievements & Activities</div>
-        <div class="section-content">
-            <ul>
-                <li>Participated in college coding competition</li>
-                <li>Participate in Dabang C competition</li>
-            </ul>
-        </div>
-    </div>
+<p>
+<abbr title="Artificial Intelligence and Machine Learning">
+AI & ML
+</abbr>
+Student
+</p>
 
-    <!-- Soft Skills Section -->
-    <div class="section-card">
-        <div class="section-header">Soft Skills</div>
-        <div class="section-content">
-            <ul>
-                <li>Quick Learner</li>
-                <li>Teamwork</li>
-                <li>Communication</li>
-            </ul>
-        </div>
-    </div>
+<p>
+Date of Birth:
+<time datetime="2007-04-07">7 April 2007</time>
+</p>
 
-</div>
+</section>
+
+<hr>
+
+<section>
+
+<details>
+<summary><b>Career Objective</b></summary>
+
+<p>
+To become a software engineer and contribute to innovative AI solutions.
+</p>
+
+</details>
+
+</section>
+
+<hr>
+
+<section>
+
+<h2>Education</h2>
+
+<ul>
+<li>B.Tech CSE (AI & ML) - Pursuing</li>
+<li>Higher Secondary Certificate (HSC)</li>
+<li>Secondary School Certificate (SSC)</li>
+</ul>
+
+</section>
+
+<hr>
+
+<section>
+
+<h2>Technical Skills</h2>
+
+<p>HTML</p>
+<progress value="80" max="100"></progress>
+
+<p>CSS</p>
+<progress value="70" max="100"></progress>
+
+<p>Java</p>
+<progress value="60" max="100"></progress>
+
+</section>
+
+<hr>
+
+<section>
+
+<h2>Communication Skills</h2>
+
+<p>English</p>
+<meter value="0.8">80%</meter>
+
+<p>Hindi</p>
+<meter value="0.9">90%</meter>
+
+</section>
+
+<hr>
+
+<section>
+
+<h2>Hobbies</h2>
+
+<blockquote>
+Reading Books, Coding, Anchoring, Photography
+</blockquote>
+
+</section>
+
+<hr>
+
+<section>
+
+<h2>Achievements</h2>
+
+<p>
+Worked as <cite>News Reporter</cite> in NSS Media Team.
+</p>
+
+<p>
+Completed projects using 
+<code>HTML, CSS and Java</code>.
+</p>
+
+<p>
+<ins>Quick Learner</ins> and interested in AI technologies.
+</p>
+
+<p>
+<small>Available for internships and learning opportunities.</small>
+</p>
+
+</section>
+
+<hr>
+
+<section>
+
+<h2>Contact</h2>
+
+<address>
+Email:
+<a href="mailto:saloni@example.com">saloni@example.com</a>
+<br>
+
+Phone: +91 9876543210
+<br>
+
+Location: Nagpur, Maharashtra
+</address>
+
+</section>
 
 </body>
 </html>
