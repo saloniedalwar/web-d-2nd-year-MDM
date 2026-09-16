@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>College FAQ</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      padding: 30px;
+    }
+
+    .faq-container {
+      max-width: 700px;
+      margin: auto;
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #1d3557;
+    }
+
+    .faq-question {
+      width: 100%;
+      padding: 15px;
+      margin-top: 10px;
+      border: none;
+      background: #1d3557;
+      color: white;
+      text-align: left;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .faq-question:hover {
+      background: #457b9d;
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 15px;
+      background: #eef2f5;
+      border-radius: 0 0 5px 5px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="faq-container">
+    <h1>College FAQ</h1>
+
+    <button class="faq-question">What are the college admission requirements?</button>
+    <div class="faq-answer">
+      Students must submit the required application form, academic certificates,
+      identification documents, and other documents specified by the department.
+    </div>
+
+    <button class="faq-question">How can I contact the department?</button>
+    <div class="faq-answer">
+      You can contact the department through the official college email address
+      or visit the department office during working hours.
+    </div>
+
+    <button class="faq-question">Where can I find the class timetable?</button>
+    <div class="faq-answer">
+      The latest class timetable is available on the college student portal
+      and department notice board.
+    </div>
+
+    <button class="faq-question">How do I apply for leave?</button>
+    <div class="faq-answer">
+      Students can submit a leave application to their class teacher or
+      department office according to college rules.
+    </div>
+  </div>
+
+  <script>
+    // Select all FAQ questions
+    const questions = document.querySelectorAll(".faq-question");
+
+    // Add event listener to each question
+    questions.forEach(function(question) {
+
+      question.addEventListener("click", function() {
+
+        // Get the answer immediately after the clicked question
+        const answer = question.nextElementSibling;
+
+        // Show or hide the answer
+        if (answer.style.display === "block") {
+          answer.style.display = "none";
+        } else {
+          answer.style.display = "block";
+        }
+
+      });
+
+    });
+  </script>
+
+</body>
+</html>
