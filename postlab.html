@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Expense Tracker</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-slate-100 min-h-screen">
+
+    <!-- Header -->
+    <header class="bg-indigo-600 text-white shadow-lg">
+        <div class="max-w-6xl mx-auto px-4 py-6">
+            <h1 class="text-3xl font-bold">Smart Expense Tracker</h1>
+            <p class="text-indigo-100 mt-1">
+                Track your daily expenses easily
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-8">
+
+        <!-- Summary -->
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
+
+            <div class="bg-white rounded-xl shadow p-6">
+                <p class="text-gray-500">Total Expenses</p>
+                <h2 id="totalExpense"
+                    class="text-3xl font-bold text-indigo-600 mt-2">
+                    ₹0
+                </h2>
+            </div>
+
+            <div class="bg-white rounded-xl shadow p-6">
+                <p class="text-gray-500">Number of Expenses</p>
+                <h2 id="expenseCount"
+                    class="text-3xl font-bold text-green-600 mt-2">
+                    0
+                </h2>
+            </div>
+
+            <div class="bg-white rounded-xl shadow p-6">
+                <p class="text-gray-500">Average Expense</p>
+                <h2 id="averageExpense"
+                    class="text-3xl font-bold text-orange-500 mt-2">
+                    ₹0
+                </h2>
+            </div>
+
+        </section>
+
+        <!-- Add Expense -->
+        <section class="bg-white rounded-xl shadow p-6 mb-8">
+
+            <h2 class="text-xl font-bold text-gray-800 mb-5">
+                Add New Expense
+            </h2>
+
+            <form id="expenseForm"
+                  class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+
+                <input
+                    type="text"
+                    id="description"
+                    placeholder="Description"
+                    required
+                    class="border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                >
+
+                <input
+                    type="number"
+                    id="amount"
+                    placeholder="Amount"
+                    min="1"
+                    step="0.01"
+                    required
+                    class="border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                >
+
+                <select
+                    id="category"
+                    required
+                    class="border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                >
+                    <option value="">Category</option>
+                    <option value="Food">Food</option>
+                    <option value="Travel">Travel</option>
+                    <option value="Shopping">Shopping</option>
+                    <option value="Bills">Bills</option>
+                    <option value="Education">Education</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <input
+                    type="date"
+                    id="date"
+                    required
+                    class="border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                >
+
+                <button
+                    type="submit"
+                    class="bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg px-4 py-3 font-semibold transition"
+                >
+                    Add Expense
+                </button>
+
+            </form>
+
+        </section>
+
+        <!-- Filter -->
+        <section class="bg-white rounded-xl shadow p-6">
+
+            <div class="flex flex-col md:flex-row
+                        md:items-center md:justify-between gap-4 mb-5">
+
+                <h2 class="text-xl font-bold text-gray-800">
+                    Expense History
+                </h2>
+
+                <select
+                    id="filterCategory"
+                    class="border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                >
+                    <option value="All">All Categories</option>
+                    <option value="Food">Food</option>
+                    <option value="Travel">Travel</option>
+                    <option value="Shopping">Shopping</option>
+                    <option value="Bills">Bills</option>
+                    <option value="Education">Education</option>
+                    <option value="Other">Other</option>
+                </select>
+
+            </div>
+
+            <!-- Desktop Table -->
+            <div class="overflow-x-auto">
+
+                <table class="w-full text-left">
+                    <thead>
+                        <tr class="border-b bg-gray-50">
+                            <th class="px-4 py-3">Description</th>
+                            <th class="px-4 py-3">Category</th>
+                            <th class="px-4 py-3">Date</th>
+                            <th class="px-4 py-3">Amount</th>
+                            <th class="px-4 py-3">Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="expenseList"></tbody>
+
+                </table>
+
+            </div>
+
+            <p id="emptyMessage"
+               class="text-center text-gray-500 py-8">
+                No expenses added yet.
+            </p>
+
+        </section>
+
+    </main>
+
+    <footer class="text-center text-gray-500 py-6">
+        Smart Expense Tracker © 2026
+    </footer>
+
+
+    <script>
+
+        // Get elements
+        const form = document.getElementById("expenseForm");
+        const description = document.getElementById("description");
+        const amount = document.getElementById("amount");
+        const category = document.getElementById("category");
+        const date = document.getElementById("date");
+
+        const expenseList = document.getElementById("expenseList");
+        const filterCategory = document.getElementById("filterCategory");
+
+        const totalExpense = document.getElementById("totalExpense");
+        const expenseCount = document.getElementById("expenseCount");
+        const averageExpense = document.getElementById("averageExpense");
+        const emptyMessage = document.getElementById("emptyMessage");
+
+
+        // Load expenses from localStorage
+        let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
+
+
+        // Set today's date by default
+        date.valueAsDate = new Date();
+
+
+        // Add expense
+        form.addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            const newExpense = {
+                id: Date.now(),
+                description: description.value.trim(),
+                amount: Number(amount.value),
+                category: category.value,
+                date: date.value
+            };
+
+            if (
+                !newExpense.description ||
+                newExpense.amount <= 0 ||
+                !newExpense.category ||
+                !newExpense.date
+            ) {
+                alert("Please enter valid expense details.");
+                return;
+            }
+
+            expenses.push(newExpense);
+
+            saveExpenses();
+            displayExpenses();
+
+            form.reset();
+            date.valueAsDate = new Date();
+        });
+
+
+        // Save to localStorage
+        function saveExpenses() {
+            localStorage.setItem(
+                "expenses",
+                JSON.stringify(expenses)
+            );
+        }
+
+
+        // Display expenses
+        function displayExpenses() {
+
+            const selectedCategory = filterCategory.value;
+
+            const filteredExpenses = selectedCategory === "All"
+                ? expenses
+                : expenses.filter(
+                    expense => expense.category === selectedCategory
+                );
+
+            expenseList.innerHTML = "";
+
+            if (filteredExpenses.length === 0) {
+                emptyMessage.classList.remove("hidden");
+            } else {
+                emptyMessage.classList.add("hidden");
+            }
+
+
+            filteredExpenses.forEach(expense => {
+
+                const row = document.createElement("tr");
+
+                row.className =
+                    "border-b hover:bg-gray-50 transition";
+
+                row.innerHTML = `
+                    <td class="px-4 py-4 font-medium">
+                        ${escapeHTML(expense.description)}
+                    </td>
+
+                    <td class="px-4 py-4">
+                        <span class="bg-indigo-100 text-indigo-700
+                                     px-3 py-1 rounded-full text-sm">
+                            ${escapeHTML(expense.category)}
+                        </span>
+                    </td>
+
+                    <td class="px-4 py-4 text-gray-600">
+                        ${expense.date}
+                    </td>
+
+                    <td class="px-4 py-4 font-semibold text-red-600">
+                        ₹${expense.amount.toFixed(2)}
+                    </td>
+
+                    <td class="px-4 py-4">
+                        <button
+                            onclick="deleteExpense(${expense.id})"
+                            class="bg-red-500 hover:bg-red-600
+                                   text-white px-3 py-2
+                                   rounded-lg text-sm">
+                            Delete
+                        </button>
+                    </td>
+                `;
+
+                expenseList.appendChild(row);
+            });
+
+            updateSummary();
+        }
+
+
+        // Delete expense
+        function deleteExpense(id) {
+
+            expenses = expenses.filter(
+                expense => expense.id !== id
+            );
+
+            saveExpenses();
+            displayExpenses();
+        }
+
+
+        // Update summary cards
+        function updateSummary() {
+
+            const total = expenses.reduce(
+                (sum, expense) => sum + expense.amount,
+                0
+            );
+
+            const count = expenses.length;
+
+            const average = count > 0
+                ? total / count
+                : 0;
+
+            totalExpense.textContent =
+                `₹${total.toFixed(2)}`;
+
+            expenseCount.textContent = count;
+
+            averageExpense.textContent =
+                `₹${average.toFixed(2)}`;
+        }
+
+
+        // Prevent HTML injection
+        function escapeHTML(text) {
+
+            const div = document.createElement("div");
+
+            div.textContent = text;
+
+            return div.innerHTML;
+        }
+
+
+        // Filter expenses
+        filterCategory.addEventListener(
+            "change",
+            displayExpenses
+        );
+
+
+        // Initial display
+        displayExpenses();
+
+    </script>
+
+</body>
+</html>
